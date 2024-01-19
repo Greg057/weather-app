@@ -44,9 +44,9 @@
     transition: .4s;
   }
   
-  input:checked + .slider {
+  /* input:checked + .slider {
     background-color: white;
-  }
+  } */
   
   input:focus + .slider {
     box-shadow: 0 0 1px black;
