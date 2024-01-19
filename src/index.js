@@ -1,9 +1,9 @@
 import "./style/main.css"
 import "./style/switch.css"
+import loadUI from "./UI"
 
 
 const API_KEY = "9bcb86768064488583e135233241801"
-const icon = document.querySelector("#icon")
 const submitBtn = document.querySelector("button")
 
 
@@ -11,17 +11,11 @@ async function getWeather(location) {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}`, {mode: 'cors'});
         const objWeather = await toJSON(response)
-        console.log(objWeather)
-
-        /* const responseF = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=5`, {mode: 'cors'});
-        const forecast = await responseF.json()
-        console.log(forecast) */
+        loadUI(objWeather)
     } catch(err) {
-        console.log("Location not found")
+        console.log(err)
     }
-    
-    
-  }
+}
 
 async function toJSON (response) {
     const weatherData = await response.json(); 
@@ -36,8 +30,7 @@ async function toJSON (response) {
     objWeather.humidity = weatherData.current.humidity
     objWeather.windMph = weatherData.current.wind_mph
     objWeather.windKph = weatherData.current.wind_kph
-
-
+    objWeather.icon = weatherData.current.condition.text
     return objWeather
 }
 
@@ -45,7 +38,7 @@ submitBtn.addEventListener("click", (event) => {
     event.preventDefault
     const locationInput = document.querySelector("#location-input")
     getWeather(locationInput.value)
-} )
+})
 
 
 

@@ -79,10 +79,6 @@ html, body {
     align-items: center;
 }
 
-.display-container > .left-container {
-
-}
-
 .display-container > .right-container {
     display: flex;
     align-items: center;
@@ -95,7 +91,7 @@ html, body {
     color: rgba(255, 255, 255, 0.911);
 }
 
-.date, .time {
+.date {
     font-weight: 500;
     font-size: 20px;
 }
