@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -7,13 +8,17 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
-    assetModuleFilename: 'icons/[hash][ext][query]'
+    clean: true
   },
   devtool: 'inline-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/template.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: './src/icons/', to: 'icons/' },
+      ],
     }),
   ],
   module: {
@@ -25,10 +30,6 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
       },
     ],
   },

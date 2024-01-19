@@ -1,3 +1,5 @@
+
+
 export default function setIcon (iconCode, isDay) {
 	const weatherIcon = document.querySelector(".weather-icon")
 	let iconNumber;
@@ -6,6 +8,7 @@ export default function setIcon (iconCode, isDay) {
 			iconNumber = icon.icon
 		}
 	})
+	
 	if (isDay === 1) {
 		weatherIcon.src = `./icons/day/${iconNumber}.png`
 	} else {

@@ -1,7 +1,7 @@
 import getWeather from "./loadJSON"
 import "./style/main.css"
 import "./style/switch.css"
-import "./icons"
+
 
 getWeather("sydney")
 
