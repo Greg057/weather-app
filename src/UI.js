@@ -1,19 +1,32 @@
-export default function loadUI (objWeather) {
-    const weatherIcon = document.querySelector(".weather-icon")
-    const locationData = document.querySelector(".location")
-    const dateDate = document.querySelector(".date")
-    const humidityData = document.querySelector("#humidity")
+import setIcon from "./icons"
 
+export default function loadUI (objWeather, unit = "C") {
+    setIcon(objWeather.iconCode, objWeather.isDay)
+    const locationData = document.querySelector(".location")
+    const dateData = document.querySelector(".date")
+    const tempData = document.querySelector(".temp")
+    const tempUnit = document.querySelector(".temp-unit")
+    const feelsLikeData = document.querySelector("#feels-like")
+    const humidityData = document.querySelector("#humidity")
+    const windData = document.querySelector("#wind")
+
+    if (unit === "C") {
+        
+    } else if (unit === "F") {
+
+    }
 }
 
-
-const unitToggle = document.querySelector("#unit")
-unitToggle.addEventListener("click", function(e) {
-    let unit = "C"
+function changeUnit (e) {
+    let unit
     if (e.target.checked) {
         unit = "F"
     } else {
         unit = "C"
     }
-    console.log(unit)
-})
+    loadUI(unit)
+}
+
+
+const unitToggle = document.querySelector("#unit")
+unitToggle.addEventListener("click", changeUnit)

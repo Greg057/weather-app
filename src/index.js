@@ -30,7 +30,8 @@ async function toJSON (response) {
     objWeather.humidity = weatherData.current.humidity
     objWeather.windMph = weatherData.current.wind_mph
     objWeather.windKph = weatherData.current.wind_kph
-    objWeather.icon = weatherData.current.condition.text
+    objWeather.iconCode = weatherData.current.condition.code
+    objWeather.isDay = weatherData.current.is_day
     return objWeather
 }
 
