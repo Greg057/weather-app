@@ -1,16 +1,25 @@
-import getWeather from "./loadJSON"
 import "./style/main.css"
 import "./style/switch.css"
+import getWeather from "./loadJSON"
 
 
 getWeather("sydney")
 
-const submitBtn = document.querySelector("button")
-submitBtn.addEventListener("click", (event) => {
-    event.preventDefault
-    const locationInput = document.querySelector("#location-input")
-    getWeather(locationInput.value)
+
+
+const inputField = document.querySelector("#location-input")
+inputField.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        getWeather(inputField.value)
+    }
 })
+
+const submitBtn = document.querySelector("button")
+submitBtn.addEventListener("click", (e) => {
+    e.preventDefault
+    getWeather(inputField.value)
+})
+
 
 
 

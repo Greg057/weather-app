@@ -30,7 +30,7 @@ function changeUnit(objWeather) {
         tempUnit.textContent = "°C"
         tempData.textContent = objWeather.tempC
         feelsLikeData.textContent = `${objWeather.feelsLikeC}°C`
-        windData.textContent = `${objWeather.windKph} km/h`
+        windData.textContent = `${objWeather.windKph} kmh`
     } else if (unit === "F") {
         tempUnit.textContent = "°F"
         tempData.textContent = objWeather.tempF

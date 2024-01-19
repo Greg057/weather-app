@@ -1,5 +1,3 @@
-
-
 export default function setIcon (iconCode, isDay) {
 	const weatherIcon = document.querySelector(".weather-icon")
 	let iconNumber;

@@ -4,6 +4,7 @@ export default async function getWeather(location) {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=9bcb86768064488583e135233241801&q=${location}`, {mode: 'cors'});
         const objWeather = await toJSON(response)
+        
         loadUI(objWeather)
     } catch(err) {
         console.log(err)
@@ -12,6 +13,7 @@ export default async function getWeather(location) {
 
 async function toJSON (response) {
     const weatherData = await response.json(); 
+    console.log(weatherData)
     const objWeather = {}
     objWeather.country = weatherData.location.country
     objWeather.city = weatherData.location.name
