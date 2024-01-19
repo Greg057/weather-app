@@ -1,3 +1,5 @@
+import setIcon from "./setIcons"
+
 export default function loadUI (objWeather, unit = "C") {
     setIcon(objWeather.iconCode, objWeather.isDay)
     const locationData = document.querySelector(".location")
@@ -7,6 +9,8 @@ export default function loadUI (objWeather, unit = "C") {
     const feelsLikeData = document.querySelector("#feels-like")
     const humidityData = document.querySelector("#humidity")
     const windData = document.querySelector("#wind")
+
+    locationData.textContent = `${objWeather.city}, ${objWeather.country}`
 
     if (unit === "C") {
         

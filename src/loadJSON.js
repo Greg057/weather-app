@@ -1,12 +1,5 @@
 import loadUI from "./UI"
 
-const submitBtn = document.querySelector("button")
-submitBtn.addEventListener("click", (event) => {
-    event.preventDefault
-    const locationInput = document.querySelector("#location-input")
-    getWeather(locationInput.value)
-})
-
 export default async function getWeather(location) {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=9bcb86768064488583e135233241801&q=${location}`, {mode: 'cors'});
