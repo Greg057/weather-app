@@ -15,7 +15,6 @@ export default function setIcon (iconCode, isDay) {
 	
 }
 
-
 const icons = [
 	{
 		"code" : 1000,

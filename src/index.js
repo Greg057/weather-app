@@ -2,10 +2,7 @@ import "./style/main.css"
 import "./style/switch.css"
 import getWeather from "./loadJSON"
 
-
 getWeather("sydney")
-
-
 
 const inputField = document.querySelector("#location-input")
 inputField.addEventListener("keypress", (e) => {

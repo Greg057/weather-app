@@ -21,8 +21,6 @@ export default function loadUI (objWeather) {
     toggleUnit.addEventListener("click", () => changeUnit(objWeather))
 }
 
-
-
 function changeUnit(objWeather) {
     let unit
     toggleUnit.checked ? unit = "F" : unit = "C"
