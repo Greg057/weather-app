@@ -1,5 +1,3 @@
-import setIcon from "./icons"
-
 export default function loadUI (objWeather, unit = "C") {
     setIcon(objWeather.iconCode, objWeather.isDay)
     const locationData = document.querySelector(".location")
@@ -27,6 +25,6 @@ function changeUnit (e) {
     loadUI(unit)
 }
 
-
 const unitToggle = document.querySelector("#unit")
 unitToggle.addEventListener("click", changeUnit)
+
