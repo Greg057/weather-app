@@ -1,34 +1,43 @@
 import setIcon from "./setIcons"
 
-export default function loadUI (objWeather, unit = "C") {
-    setIcon(objWeather.iconCode, objWeather.isDay)
+const toggleUnit = document.querySelector("#unit")
+const tempData = document.querySelector(".temp")
+const tempUnit = document.querySelector(".temp-unit")
+const feelsLikeData = document.querySelector("#feels-like")
+const windData = document.querySelector("#wind")
+
+export default function loadUI (objWeather) {
     const locationData = document.querySelector(".location")
     const dateData = document.querySelector(".date")
-    const tempData = document.querySelector(".temp")
-    const tempUnit = document.querySelector(".temp-unit")
-    const feelsLikeData = document.querySelector("#feels-like")
     const humidityData = document.querySelector("#humidity")
-    const windData = document.querySelector("#wind")
 
     locationData.textContent = `${objWeather.city}, ${objWeather.country}`
+    dateData.textContent = objWeather.localTime
+    humidityData.textContent = `${objWeather.humidity}%`
+ 
+    setIcon(objWeather.iconCode, objWeather.isDay)
+    changeUnit(objWeather);
 
-    if (unit === "C") {
-        
-    } else if (unit === "F") {
-
-    }
+    toggleUnit.addEventListener("click", () => changeUnit(objWeather))
 }
 
-function changeUnit (e) {
+
+
+function changeUnit(objWeather) {
     let unit
-    if (e.target.checked) {
-        unit = "F"
-    } else {
-        unit = "C"
+    toggleUnit.checked ? unit = "F" : unit = "C"
+    if (unit === "C") {
+        tempUnit.textContent = "°C"
+        tempData.textContent = objWeather.tempC
+        feelsLikeData.textContent = `${objWeather.feelsLikeC}°C`
+        windData.textContent = `${objWeather.windKph} km/h`
+    } else if (unit === "F") {
+        tempUnit.textContent = "°F"
+        tempData.textContent = objWeather.tempF
+        feelsLikeData.textContent = `${objWeather.feelsLikeF}°F`
+        windData.textContent = `${objWeather.windMph} mph`
     }
-    loadUI(unit)
 }
 
-const unitToggle = document.querySelector("#unit")
-unitToggle.addEventListener("click", changeUnit)
+
 
